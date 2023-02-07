@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HealthManager : MonoBehaviour
 {
@@ -8,6 +7,7 @@ public class HealthManager : MonoBehaviour
     public static HealthManager instanceHealthManager;
     public static int maxHP = 100;
     public int actualHP;
+    public Image vida;
     //public Slider healthSlider;
 
     public bool isDead;
@@ -18,6 +18,8 @@ public class HealthManager : MonoBehaviour
     {
         actualHP = maxHP;
         isDead = false;
+
+        vida.fillAmount = actualHP;
 
         //characterController = GetComponent<CharacterController>();
 
@@ -88,7 +90,9 @@ public class HealthManager : MonoBehaviour
         {
           int damage = Random.Range(15,20);
           actualHP = actualHP - damage;   
-          Debug.Log("Energía: "+actualHP);
+
+          vida.fillAmount = actualHP/100.0f;
+          Debug.Log("Energía: "+ vida.fillAmount);
         }
     }
 
@@ -100,7 +104,8 @@ public class HealthManager : MonoBehaviour
         
         CharacterController characterController = GetComponent<CharacterController>();
         characterController.enabled = false; 
-
+        transform.rotation = new Quaternion(0,0,0,1);
+            
         Destroy(this.gameObject,5.0f);
         //Animación de estallido estilo Megaman?
     }

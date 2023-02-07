@@ -19,14 +19,13 @@ public class Growth : MonoBehaviour
 
     //Instancia del GameManager para emplear GM.pointsmanager()
 
-
     void Start()
     {
         sideA = Random.Range(1,4);
         sideB = Random.Range(1,4);
 
         delayTime = Random.Range(1.0f,2.0f);
-        repeatRate = Random.Range(3.0f,5.0f);
+        repeatRate = Random.Range(5.0f,7.0f);
 
         rootSizeDisplay = GetComponentInParent<TextMesh>();
 

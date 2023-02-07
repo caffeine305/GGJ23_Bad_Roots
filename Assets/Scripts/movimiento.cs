@@ -14,6 +14,7 @@ public class movimiento : MonoBehaviour
     private Animator playerAnimator;
     private GameObject cutObject;
     private GameObject trimObject;
+    private Transform thisTransform;
 
 
     private Vector3 moveDirection = Vector3.zero;
@@ -30,6 +31,8 @@ public class movimiento : MonoBehaviour
         cutObject.SetActive(false);
         trimObject.SetActive(false);
 
+        thisTransform = this.transform;
+
     }
 
     void Update()
@@ -40,7 +43,18 @@ public class movimiento : MonoBehaviour
             // We are grounded, so recalculate
             // move direction directly from axes */
 
+
             moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical"));
+            
+            /* sE SUPONE QUE ESTO TRABA EN UN CUADRO AL PERSONAJE!!
+        
+            moveDirection = new Vector3(
+            Mathf.Clamp(moveDirection.x, -14.5f, 14.5f),
+            Mathf.Clamp(moveDirection.y, -0.75f, 1.0f),
+            Mathf.Clamp(moveDirection.z, -14.5f, 14.5f)
+            );
+            */
+
             moveDirection *= speed;
 
 

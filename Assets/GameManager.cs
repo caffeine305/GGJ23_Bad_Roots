@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour
             //Instantiate(troca, trocaTransform.position , trocaTransform.rotation);
 
             checkHP = HealthManager.instanceHealthManager.actualHP;
-            yield return new WaitForSeconds(spawnTime * Random.Range(3.0f, 5.0f));
+            yield return new WaitForSeconds(spawnTime * Random.Range(2.0f, 4.0f));
         }
 
         
